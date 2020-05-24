@@ -1,35 +1,33 @@
 #include <iostream>
 using namespace std;
 
-static int height;
+int height;
+int center;
 
-int drawX(int elemCnt) {
-    for(int x=0; x<height; ++x) {
-        if(x>=center-step && x<=center+step)
-            cout << "*";
-        else
-            cout << " ";
-    }
-    if(y < center) {
-        step += (height%2==0 && y==center-1) ? 0 : 1;
-    } else
-        --step;
-
+int drawX(int step) {
+    for(int x=0; x<height; ++x) 
+        cout << (x>=center-step && x<=center+step ? "*" : " ");
     cout << endl;
 
-    return 0;
+    return step;
 }
 
 int main() {
     cout << "Object height: " << endl;
     cin >> height;
-    cout << "my height : " << height << endl;
 
     int step = 0;
-    int center = height/2;
+    center = height/2;
+
     for(int y=0; y<height; ++y) {
-       
+        step = drawX(step);
+
+        (y < center)
+        ? (step += (height%2==0 && y==center-1) ? 0 : 1)
+        : --step;
     }
+
+    cout << "That's it!" << endl;
 
     return 0;
 }
